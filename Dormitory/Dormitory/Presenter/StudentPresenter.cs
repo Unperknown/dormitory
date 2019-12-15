@@ -19,8 +19,9 @@ namespace Dormitory.Presenter
             _view.StudentViewSection.DataSource = _view.StudentDataSet.Tables[_repository.TableName];
         }
 
-        public override void SelectDataToDatabase()
+        public void SelectDataToDatabase(string student_name, string student_num, string room_number, bool isGwangju, string plus_point, string minus_point)
         {
+            ((StudentRepository)_repository).SelectData(student_name, student_num, room_number, isGwangju, plus_point, minus_point);
         }
 
         public override void InsertDataToDatabase()

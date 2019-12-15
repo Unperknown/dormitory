@@ -19,6 +19,11 @@ namespace Dormitory.Presenter
             _view.LaptopViewSection.DataSource = _view.LaptopDataSet.Tables[_repository.TableName];
         }
 
+        public void SelectDataToDatabase(string stu_num, string laptop_num, string use_location, string last_rental_date, bool isBanned)
+        {
+            ((LaptopRepository)_repository).SelectData(stu_num, laptop_num, use_location, last_rental_date, isBanned);
+        }
+
         public override void InsertDataToDatabase()
         {
             _repository.InsertData(_view.LaptopViewSection.SelectedRows);

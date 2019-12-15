@@ -39,9 +39,9 @@
             this.Stu_Search_btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.IsGwangjuCheckBox = new System.Windows.Forms.CheckBox();
             this.minus_point = new System.Windows.Forms.TextBox();
             this.plus_point = new System.Windows.Forms.TextBox();
-            this.address = new System.Windows.Forms.TextBox();
             this.Stu_room_number = new System.Windows.Forms.TextBox();
             this.Student_name = new System.Windows.Forms.TextBox();
             this.Student_num = new System.Windows.Forms.TextBox();
@@ -72,6 +72,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.RoomView = new System.Windows.Forms.DataGridView();
             this.laptop_tab = new System.Windows.Forms.TabPage();
+            this.LaptopDatabaseToExcel = new System.Windows.Forms.Button();
+            this.LaptopDatabaseToTxt = new System.Windows.Forms.Button();
             this.Laptop_insert_btn = new System.Windows.Forms.Button();
             this.Laptop_clear_btn = new System.Windows.Forms.Button();
             this.Laptop_update_btn = new System.Windows.Forms.Button();
@@ -92,8 +94,6 @@
             this.LaptopView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.LaptopDatabaseToTxt = new System.Windows.Forms.Button();
-            this.LaptopDatabaseToExcel = new System.Windows.Forms.Button();
             this.student_table.SuspendLayout();
             this.stu_tab.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -238,9 +238,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.IsGwangjuCheckBox);
             this.groupBox1.Controls.Add(this.minus_point);
             this.groupBox1.Controls.Add(this.plus_point);
-            this.groupBox1.Controls.Add(this.address);
             this.groupBox1.Controls.Add(this.Stu_room_number);
             this.groupBox1.Controls.Add(this.Student_name);
             this.groupBox1.Controls.Add(this.Student_num);
@@ -260,6 +260,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "검색조건";
             // 
+            // IsGwangjuCheckBox
+            // 
+            this.IsGwangjuCheckBox.AutoSize = true;
+            this.IsGwangjuCheckBox.Location = new System.Drawing.Point(273, 424);
+            this.IsGwangjuCheckBox.Margin = new System.Windows.Forms.Padding(6);
+            this.IsGwangjuCheckBox.Name = "IsGwangjuCheckBox";
+            this.IsGwangjuCheckBox.Size = new System.Drawing.Size(28, 27);
+            this.IsGwangjuCheckBox.TabIndex = 13;
+            this.IsGwangjuCheckBox.UseVisualStyleBackColor = true;
+            // 
             // minus_point
             // 
             this.minus_point.Location = new System.Drawing.Point(182, 576);
@@ -275,14 +285,6 @@
             this.plus_point.Name = "plus_point";
             this.plus_point.Size = new System.Drawing.Size(119, 39);
             this.plus_point.TabIndex = 10;
-            // 
-            // address
-            // 
-            this.address.Location = new System.Drawing.Point(245, 412);
-            this.address.Margin = new System.Windows.Forms.Padding(6);
-            this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(329, 39);
-            this.address.TabIndex = 9;
             // 
             // Stu_room_number
             // 
@@ -337,9 +339,9 @@
             this.label6.Location = new System.Drawing.Point(71, 414);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(170, 38);
+            this.label6.Size = new System.Drawing.Size(193, 38);
             this.label6.TabIndex = 3;
-            this.label6.Text = "거주지역 :";
+            this.label6.Text = "타시도 여부";
             // 
             // label5
             // 
@@ -636,6 +638,30 @@
             this.laptop_tab.Text = "노트북";
             this.laptop_tab.UseVisualStyleBackColor = true;
             // 
+            // LaptopDatabaseToExcel
+            // 
+            this.LaptopDatabaseToExcel.Font = new System.Drawing.Font("12롯데마트드림Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LaptopDatabaseToExcel.Location = new System.Drawing.Point(1623, 810);
+            this.LaptopDatabaseToExcel.Margin = new System.Windows.Forms.Padding(6);
+            this.LaptopDatabaseToExcel.Name = "LaptopDatabaseToExcel";
+            this.LaptopDatabaseToExcel.Size = new System.Drawing.Size(309, 80);
+            this.LaptopDatabaseToExcel.TabIndex = 17;
+            this.LaptopDatabaseToExcel.Text = "엑셀 파일로 추출";
+            this.LaptopDatabaseToExcel.UseVisualStyleBackColor = true;
+            this.LaptopDatabaseToExcel.Click += new System.EventHandler(this.LaptopDatabaseToExcel_Click);
+            // 
+            // LaptopDatabaseToTxt
+            // 
+            this.LaptopDatabaseToTxt.Font = new System.Drawing.Font("12롯데마트드림Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LaptopDatabaseToTxt.Location = new System.Drawing.Point(1306, 810);
+            this.LaptopDatabaseToTxt.Margin = new System.Windows.Forms.Padding(6);
+            this.LaptopDatabaseToTxt.Name = "LaptopDatabaseToTxt";
+            this.LaptopDatabaseToTxt.Size = new System.Drawing.Size(307, 80);
+            this.LaptopDatabaseToTxt.TabIndex = 16;
+            this.LaptopDatabaseToTxt.Text = ".txt로 추출";
+            this.LaptopDatabaseToTxt.UseVisualStyleBackColor = true;
+            this.LaptopDatabaseToTxt.Click += new System.EventHandler(this.LaptopDatabaseToTxt_Click);
+            // 
             // Laptop_insert_btn
             // 
             this.Laptop_insert_btn.Font = new System.Drawing.Font("12롯데마트드림Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -733,10 +759,10 @@
             // 
             this.laptop_comboBox.FormattingEnabled = true;
             this.laptop_comboBox.Items.AddRange(new object[] {
-            "랩1실",
-            "랩2실",
-            "창업동아리1실",
-            "창업동아리2실"});
+            "Lab-1",
+            "Lab-2",
+            "Startup-1",
+            "Startup-2"});
             this.laptop_comboBox.Location = new System.Drawing.Point(238, 506);
             this.laptop_comboBox.Margin = new System.Windows.Forms.Padding(6);
             this.laptop_comboBox.Name = "laptop_comboBox";
@@ -868,30 +894,6 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // LaptopDatabaseToTxt
-            // 
-            this.LaptopDatabaseToTxt.Font = new System.Drawing.Font("12롯데마트드림Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LaptopDatabaseToTxt.Location = new System.Drawing.Point(1306, 810);
-            this.LaptopDatabaseToTxt.Margin = new System.Windows.Forms.Padding(6);
-            this.LaptopDatabaseToTxt.Name = "LaptopDatabaseToTxt";
-            this.LaptopDatabaseToTxt.Size = new System.Drawing.Size(307, 80);
-            this.LaptopDatabaseToTxt.TabIndex = 16;
-            this.LaptopDatabaseToTxt.Text = ".txt로 추출";
-            this.LaptopDatabaseToTxt.UseVisualStyleBackColor = true;
-            this.LaptopDatabaseToTxt.Click += new System.EventHandler(this.LaptopDatabaseToTxt_Click);
-            // 
-            // LaptopDatabaseToExcel
-            // 
-            this.LaptopDatabaseToExcel.Font = new System.Drawing.Font("12롯데마트드림Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LaptopDatabaseToExcel.Location = new System.Drawing.Point(1623, 810);
-            this.LaptopDatabaseToExcel.Margin = new System.Windows.Forms.Padding(6);
-            this.LaptopDatabaseToExcel.Name = "LaptopDatabaseToExcel";
-            this.LaptopDatabaseToExcel.Size = new System.Drawing.Size(309, 80);
-            this.LaptopDatabaseToExcel.TabIndex = 17;
-            this.LaptopDatabaseToExcel.Text = "엑셀 파일로 추출";
-            this.LaptopDatabaseToExcel.UseVisualStyleBackColor = true;
-            this.LaptopDatabaseToExcel.Click += new System.EventHandler(this.LaptopDatabaseToExcel_Click);
-            // 
             // DormitoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
@@ -948,7 +950,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox address;
         private System.Windows.Forms.Button Stu_clear_btn;
         private System.Windows.Forms.Button Stu_update_btn;
         private System.Windows.Forms.Button Stu_Delete_btn;
@@ -997,6 +998,7 @@
         private System.Windows.Forms.Button RoomDatabaseToTxt;
         private System.Windows.Forms.Button LaptopDatabaseToExcel;
         private System.Windows.Forms.Button LaptopDatabaseToTxt;
+        private System.Windows.Forms.CheckBox IsGwangjuCheckBox;
     }
 }
 

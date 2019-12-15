@@ -34,11 +34,6 @@ namespace Dormitory.Model
             _adapter.Fill(dataSet, TableName);
         }
 
-        public void SelectData(IList datas)
-        {
-            AccessAndProcessQuery(datas, new QueryDelegate(_selectQuery));
-        }
-
         public void InsertData(IList datas)
         {
             AccessAndProcessQuery(datas, new QueryDelegate(_insertQuery));
@@ -98,14 +93,6 @@ namespace Dormitory.Model
             {
                 _connection.Close();
             }
-        }
-
-        protected virtual void _selectQuery(dynamic data)
-        {
-            _adapter.SelectCommand = new MySqlCommand(SQLCommand.SelectCommand(TableName, DataGridView.Columns[data.ColumnIndex].Name, DataGridView.Columns[0].Name), _connection);
-            _adapter.SelectCommand.Parameters.AddWithValue("@selectValue", DataGridView.Rows[data.RowIndex].Cells[data.ColumnIndex].Value.ToString());
-            _adapter.SelectCommand.Parameters.AddWithValue("@primeValue", DataGridView.Rows[data.RowIndex].Cells[0].Value.ToString());
-            _adapter.SelectCommand.ExecuteNonQuery();
         }
 
         protected virtual void _insertQuery(dynamic data)

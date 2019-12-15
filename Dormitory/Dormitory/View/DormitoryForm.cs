@@ -17,7 +17,7 @@ namespace Dormitory.View
         {
             InitializeComponent();
         }
-        
+
         public StudentPresenter StudentPresenter { private get; set; }
         public RoomPresenter RoomPresenter { private get; set; }
         public LaptopPresenter LaptopPresenter { private get; set; }
@@ -39,14 +39,8 @@ namespace Dormitory.View
 
         private void Stu_Search_btn_Click(object sender, EventArgs e)
         {
-            Student_name.ToString();
-            Student_num.ResetText();
-            Stu_room_number.ResetText();
-            address.ResetText();
-            plus_point.ResetText();
-            minus_point.ResetText();
-
-            StudentPresenter.SelectDataToDatabase();
+            StudentPresenter.SelectDataToDatabase(Student_name.Text, Student_num.Text, Stu_room_number.Text, IsGwangjuCheckBox.Checked, plus_point.Text, minus_point.Text);
+            StudentPresenter.RefreshDatabaseView();
         }
 
         private void Stu_insert_btn_Click(object sender, EventArgs e)
@@ -72,9 +66,12 @@ namespace Dormitory.View
             Student_name.ResetText();
             Student_num.ResetText();
             Stu_room_number.ResetText();
-            address.ResetText();
+            IsGwangjuCheckBox.Checked = false;
             plus_point.ResetText();
             minus_point.ResetText();
+
+            StudentPresenter.SelectDataToDatabase(Student_name.Text, Student_num.Text, Stu_room_number.Text, IsGwangjuCheckBox.Checked, plus_point.Text, minus_point.Text);
+            StudentPresenter.RefreshDatabaseView();
         }
 
         private void Room_search_btn_Click(object sender, EventArgs e)
@@ -110,7 +107,8 @@ namespace Dormitory.View
 
         private void Laptop_search_btn_Click(object sender, EventArgs e)
         {
-            LaptopPresenter.SelectDataToDatabase();
+            LaptopPresenter.SelectDataToDatabase(Laptop_stu_num.Text, Laptop_num.Text, laptop_comboBox.Text, last_rental_date.Text, check_Yes.Checked);
+            LaptopPresenter.RefreshDatabaseView();
         }
 
         private void Laptop_insert_btn_Click(object sender, EventArgs e)
@@ -136,8 +134,11 @@ namespace Dormitory.View
             Laptop_num.ResetText();
             Laptop_stu_num.ResetText();
             last_rental_date.ResetText();
-            check_Yes.ResetText();
+            check_Yes.Checked = false;
             laptop_comboBox.ResetText();
+
+            LaptopPresenter.SelectDataToDatabase(Laptop_stu_num.Text, Laptop_num.Text, laptop_comboBox.SelectedText, last_rental_date.Text, check_Yes.Checked);
+            LaptopPresenter.RefreshDatabaseView();
         }
 
         private void StudentDatabaseToTXT_Click(object sender, EventArgs e)
