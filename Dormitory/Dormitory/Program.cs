@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Dormitory.View;
+using Dormitory.Presenter;
+using Dormitory.Model;
+using System;
 using System.Windows.Forms;
 
 namespace Dormitory
@@ -16,7 +16,18 @@ namespace Dormitory
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dormitory_Form1());
+
+            var studentRepository = new StudentRepository("student");
+            var roomRepository = new RoomRepository("room");
+            var laptopRepository = new LaptopRepository("laptop");
+
+            var view = new DormitoryForm();
+
+            var studentPresenter = new StudentPresenter(view, studentRepository);
+            var roomPresenter = new RoomPresenter(view, roomRepository);
+            var laptopPresenter = new LaptopPresenter(view, laptopRepository);
+
+            Application.Run(view);
         }
     }
 }
