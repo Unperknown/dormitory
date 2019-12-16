@@ -14,6 +14,59 @@ namespace Dormitory.Model
     {
         public RoomRepository(string tableName) : base(tableName) { }
 
+        public void SelectData(string room_number, string people_num, string last_roll_call, string last_clean_up)
+        {
+            try
+            {
+                _connection.Open();
+
+                string selectCommand = $"select * from {TableName}";
+                List<string> extraCommand = new List<string>();
+
+                if (room_number != "")
+                {
+                    extraCommand.Add($"room_number = \'{room_number}\'");
+                }
+
+                if (people_num != "")
+                {
+                    extraCommand.Add($"people_num = \'{people_num}\'");
+                }
+
+                if (last_roll_call != "")
+                {
+                    extraCommand.Add($"last_roll_call = \'{last_roll_call.ToString().Substring(0, 11)}\'");
+                }
+                
+                if (last_clean_up != "")
+                {
+                    extraCommand.Add($"last_clean_up = \'{last_clean_up.ToString().Substring(0, 11)}\'");
+                }
+                
+                if (extraCommand.Count() != 0)
+                {
+                    string whereQuery = " where " + string.Join("and", from command in extraCommand select command);
+
+                    selectCommand += whereQuery;
+                }
+
+                _adapter.SelectCommand = new MySqlCommand(selectCommand, _connection);
+                _adapter.SelectCommand.ExecuteNonQuery();
+            }
+            catch (MySqlException databaseEx)
+            {
+                MessageBox.Show(databaseEx.Message, "데이터베이스 오류");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "기타 오류");
+            }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
         protected override void _insertQuery(dynamic data)
         {
             _adapter.InsertCommand = new MySqlCommand(SQLCommand.InsertCommand(TableName, ColumnCount), _connection);

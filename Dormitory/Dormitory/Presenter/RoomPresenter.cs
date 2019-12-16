@@ -19,6 +19,11 @@ namespace Dormitory.Presenter
             _view.RoomViewSection.DataSource = _view.RoomDataSet.Tables[_repository.TableName];
         }
 
+        public void SelectDataToDatabase(string room_number, string people_num, string last_roll_call, string last_clean_up)
+        {
+            ((RoomRepository)_repository).SelectData(room_number, people_num, last_roll_call, last_clean_up);
+        }
+
         public override void InsertDataToDatabase()
         {
             _repository.InsertData(_view.RoomViewSection.SelectedRows);

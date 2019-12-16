@@ -76,7 +76,8 @@ namespace Dormitory.View
 
         private void Room_search_btn_Click(object sender, EventArgs e)
         {
-            RoomPresenter.SelectDataToDatabase();
+            RoomPresenter.SelectDataToDatabase(room_number.Text, people_num.Text, last_roll_call.Text, last_clean_up.Text);
+            RoomPresenter.RefreshDatabaseView();
         }
 
         private void Room_insert_btn_Click(object sender, EventArgs e)
@@ -103,6 +104,9 @@ namespace Dormitory.View
             people_num.ResetText();
             last_roll_call.ResetText();
             last_clean_up.ResetText();
+
+            RoomPresenter.SelectDataToDatabase(room_number.Text, people_num.Text, last_roll_call.Text, last_clean_up.Text);
+            RoomPresenter.RefreshDatabaseView();
         }
 
         private void Laptop_search_btn_Click(object sender, EventArgs e)

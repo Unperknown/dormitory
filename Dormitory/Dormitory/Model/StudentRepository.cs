@@ -25,12 +25,12 @@ namespace Dormitory.Model
 
                 if (student_name != "")
                 {
-                    extraCommand.Add($"student_name = \'{student_name}\'");
+                    extraCommand.Add($"name = \'{student_name}\'");
                 }
 
                 if (student_num != "")
                 {
-                    extraCommand.Add($"student_num = \'{student_num}\'");
+                    extraCommand.Add($"stu_num = \'{student_num}\'");
                 }
 
                 if (room_number != "")
@@ -50,7 +50,7 @@ namespace Dormitory.Model
 
                 if (minus_point != "")
                 {
-                    extraCommand.Add($"plus_point = {minus_point}");
+                    extraCommand.Add($"minus_point = {minus_point}");
                 }
 
                 if (extraCommand.Count() != 0)
@@ -59,8 +59,7 @@ namespace Dormitory.Model
 
                     selectCommand += whereQuery;
                 }
-
-                MessageBox.Show(selectCommand);
+                
                 _adapter.SelectCommand = new MySqlCommand(selectCommand, _connection);
                 _adapter.SelectCommand.ExecuteNonQuery();
             }

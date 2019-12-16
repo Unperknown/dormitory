@@ -55,7 +55,6 @@ namespace Dormitory.Model
                     selectCommand += whereQuery;
                 }
 
-                MessageBox.Show(selectCommand);
                 _adapter.SelectCommand = new MySqlCommand(selectCommand, _connection);
                 _adapter.SelectCommand.ExecuteNonQuery();
             }
